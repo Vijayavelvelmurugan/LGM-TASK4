@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<script>
+    function calc(n) {
+        var num = document.getElementById("inputBox").value;
+        if (n.innerHTML === 'clear') {
+            num = '';
+        } else if (n.innerHTML === '=') {
+            try {
+                num = eval(num);
+            } catch (error) {
+                num = 'Error';
+            }
+        } else {
+            num += n.innerHTML;
+        }
+        document.getElementById('inputBox').value = num;
+    }
+
+    function del() {
+        let num = document.getElementById("inputBox").value;
+        let len = num.length;
+        let newNum = num.slice(0, len - 1);
+        document.getElementById("inputBox").value = newNum;
+    }
+</script>
+<style>
+    *{
+        margin: 0;
+        background-color: black;
+    }
+    h1{
+        color: blue;
+        background-color: black;
+        text-align: center;
+    }
+        table{
+           border: blue 3px solid;
+           height: 350px;
+           background-color: black;
+           position: absolute;
+           margin-left: 640px;
+           margin-top: 150px;
+        }
+        input{
+            padding: 15px 30px;
+            border: blue 3px solid;
+            background-color: grey;
+        }
+        button{
+            color: blue;
+            border: blue 3px solid;
+            background-color: black;
+            height: 35px;
+            width: 55px;
+                }
+                p{
+                    color: blue;
+                }
+        </style>
+<body>
+    <h1>Online Calculator</h1>
+    <table>
+        <tr>
+            <td colspan="4">
+                <input type="text" id="inputBox" placeholder="0">
+            </td>
+        </tr>
+        <tr>
+            <td><button onclick="calc(this)">9</button></td>
+            <td><button onclick="calc(this)">8</button></td>
+            <td><button onclick="calc(this)">7</button></td>
+            <td><button onclick="calc(this)">+</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="calc(this)">6</button></td>
+            <td><button onclick="calc(this)">5</button></td>
+            <td><button onclick="calc(this)">4</button></td>
+            <td><button onclick="calc(this)">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="calc(this)">3</button></td>
+            <td><button onclick="calc(this)">2</button></td>
+            <td><button onclick="calc(this)">1</button></td>
+            <td><button onclick="calc(this)">*</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="calc(this)">clear</button></td>
+            <td><button onclick="calc(this)">0</button></td>
+            <td><button onclick="calc(this)">=</button></td>
+            <td><button onclick="calc(this)">/</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="del()">del</button></td>
+            <td><button onclick="calc(this)">^</button></td>
+            <td><button onclick="calc(this)">~</button></td>
+            <td><button onclick="calc(this)">.</button></td>
+        </tr>
+    </table>
+</body>
+</html>
